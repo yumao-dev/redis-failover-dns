@@ -1,0 +1,22 @@
+{
+    "name": "redisfailoverdns",
+    "version": "1.0.0",
+    "description": "redis sentinel 主从切换时修改dns记录",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "ioredis": "^5.3.0",
+        "helper": "^1.0.19",
+        "rxjs": "^7.8.0"
+    },
+    "devDependencies": {
+        "@types/cookie-signature": "^1.1.0",
+        "@types/ioredis": "^5.0.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.9.5"
+    }
+}
