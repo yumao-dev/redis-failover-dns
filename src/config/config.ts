@@ -1,4 +1,4 @@
-﻿import { ConfigHelper, Level, LogHelper } from "helper";
+﻿import { ConfigHelper, Level, LogHelper } from "yanyu-helper";
 export class Config {
   // public static readonly client = { name: "cid" }; //取其中的值用作pv的参数
   // public static readonly token = { name: "token" };//取其中的值用作uv的参数，进一步取userid作为其他参数值 visiter才是记录访问日志，log只是记录日志两者分开
@@ -18,6 +18,7 @@ export class Config {
   public static apiKey: string;
   public static apiSecret: string;
   public static mastername: string;
+  public static aliddnsapi: string;
 
   //基础配置 这些默认值都是无效的只是给看一下具体的类型
   public static loglevel: Level | undefined = Level.INFO;
@@ -36,6 +37,7 @@ export class Config {
       Config.apiKey = result.apiKey;
       Config.apiSecret = result.apiSecret;
       Config.mastername = result.mastername;
+      Config.aliddnsapi = result.aliddnsapi;
 
       //基础配置
       Config.clientidname = result.clientidname;

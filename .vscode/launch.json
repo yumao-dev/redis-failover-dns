@@ -6,6 +6,7 @@
     "configurations": [
         {
             "type": "node",
+            
             "request": "launch",
             "name": "运行ts文件",
             // "program": "${workspaceFolder}\\app.ts",
@@ -17,13 +18,20 @@
                 "ts-node/register"
             ],
             "args": [
-                "${workspaceFolder}/app.ts"
+                "${workspaceFolder}/src/app.ts"
             ],
+            "cwd": "${workspaceFolder}/src",
             "env": {
                 // "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json",
                 "NODE_ENV2": "PRODUCTION",
                 "NODE_ENV": "debug"
             }
+        },{
+            "command": "npm test",
+            "name": "Run npm test",
+            "request": "launch",
+            "type": "node-terminal",
+            "cwd": "${workspaceFolder}/src/"
         }
     ]
 }

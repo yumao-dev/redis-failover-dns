@@ -33,38 +33,39 @@ export class RedisCommand implements IConnection<Redis> {
 
 export class RedisClients {
   private static clientmaps: Map<any, Redis> = new Map();
-  //执行主入口 这个是关闭连接
+
   public static GetClient(config: RedisOptions): Promise<Redis> {
-    return new Promise<Redis>((resolve, reject) => {
-      if (!config) reject(new Error("配置不能为null"));
-      let client = this.clientmaps.get(config);
-      if (!client) {
-        // client = new Cluster(config.nodes, {
-        //     scaleReads: 'slave',
-        //     clusterRetryStrategy: (times) => {
-        //         var delay = Math.min(times * 50, 2000);
-        //         return delay;
-        //     },
-        //     redisOptions: { db: config.db }
-        // })
-        client = new Redis({
-          port: config.port,
-          host: config.host,
-          name: config.name,
-          retryStrategy: (times) => {
-            var delay = Math.min(times * 50, 2000);
-            return delay;
-          },
-          reconnectOnError: (err) => {
-            console.log(err);
-            return false;
-          },
-        }).on("error", (err) => {
-          reject(err);
-        });
-        this.clientmaps.set(config, client);
-      }
-      resolve(client);
-    });
+    if (!config) throw new Error("配置不能为null");
+    let client = this.clientmaps.get(config);
+    if (!client) {
+      // client = new Cluster(config.nodes, {
+      //     scaleReads: 'slave',
+      //     clusterRetryStrategy: (times) => {
+      //         var delay = Math.min(times * 50, 2000);
+      //         return delay;
+      //     },
+      //     redisOptions: { db: config.db }
+      // })
+      client = new Redis({
+        lazyConnect: true,
+        port: config.port,
+        host: config.host,
+        name: config.name,
+        retryStrategy: (times) => {
+          var delay = Math.min(times * 50, 2000);
+          return delay;
+        },
+        reconnectOnError: (err) => {
+          console.log(err);
+          return false;
+        },
+      });
+      // client.connect(() => {
+      //   this.clientmaps.set(config, client!);
+      // });
+      // this.clientmaps.set(config, client!);
+    }
+
+    return Promise.resolve(client);
   }
 }

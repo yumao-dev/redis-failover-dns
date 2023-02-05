@@ -46,7 +46,7 @@ export class RedisClients {
         //     },
         //     redisOptions: { db: config.db }
         // })
-        client = new IORedis({
+        client = new IORedis.Redis({
           sentinels: config.nodes,
           name: config.name,
           db: config.db,

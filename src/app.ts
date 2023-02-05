@@ -1,4 +1,4 @@
-import { LogHelper } from "helper";
+import { LogHelper } from "yanyu-helper";
 import { Config } from "./config/config";
 import { SentinelSwitchDNS } from "./job/sentinelswitchdns";
 
@@ -7,7 +7,7 @@ new Config()
   .Load()
   .then((a) => {
     //开启任务
-    new SentinelSwitchDNS().Start();
+    return new SentinelSwitchDNS().Start();
   })
   .catch((err) => {
     console.error(err);

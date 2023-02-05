@@ -1,22 +1,34 @@
 {
-    "name": "redisfailoverdns",
-    "version": "1.0.0",
-    "description": "redis sentinel 主从切换时修改dns记录",
-    "main": "app.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "ioredis": "^5.3.0",
-        "helper": "^1.0.19",
-        "rxjs": "^7.8.0"
-    },
-    "devDependencies": {
-        "@types/cookie-signature": "^1.1.0",
-        "@types/ioredis": "^5.0.0",
-        "ts-node": "^10.9.1",
-        "typescript": "^4.9.5"
-    }
+  "name": "redisfailoverdns",
+  "version": "1.0.0",
+  "description": "redis sentinel 主从切换时修改dns记录",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha 'test/*.ts'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ioredis": "^5.3.0",
+    "rxjs": "^7.8.0",
+    "yanyu-helper": "^1.0.21"
+  },
+  "devDependencies": {
+    "@types/cookie-signature": "^1.1.0",
+    "@types/ioredis": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5",
+    "mocha": "^10.2.0",
+    "@types/mocha": "^10.0.1",
+    "mochawesome": "^7.1.3"
+  },
+  "mocha": {
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "mochawesome"
+    ],
+    "ui": "bdd"
+  }
 }
