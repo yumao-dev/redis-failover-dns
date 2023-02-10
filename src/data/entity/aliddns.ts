@@ -3,4 +3,5 @@ export interface AliDDNS {
   apisecret: string;
   domainname: string;
   ip: string;
+  t: number;
 }

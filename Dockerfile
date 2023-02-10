@@ -1,5 +1,5 @@
 
-FROM node:12-alpine AS build
+FROM node:14-alpine AS build
 WORKDIR /usr/src/app
 COPY src/package*.json .
 RUN npm install
@@ -8,16 +8,17 @@ COPY src/. .
 RUN npx tsc -p ./tsconfig.json
 
 # This file is a template, and might need editing before it works on your project.
-FROM node:12-alpine 
-
+FROM node:14-alpine 
 LABEL MAINTAINER "yumao"
-# Uncomment if use of `process.dlopen` is necessary
-# apk add --no-cache libc6-compat
+
+# Copy files as a non-root user. The `node` user is built in the Node image.
+WORKDIR /usr/src/app
+RUN chown node:node ./
+USER node
 
 ENV PORT=3000 \
     NODE_ENV=production
 
-WORKDIR /usr/src/app
 COPY src/package.json .
 RUN npm install --production
 COPY --from=build /usr/src/app/dist .

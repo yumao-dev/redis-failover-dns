@@ -40,6 +40,7 @@ export class SentinelSwitchDNS {
       apisecret: Config.apiSecret,
       domainname: Config.redisdomain,
       ip: item as string,
+      t: Date.now(),
     });
   };
 }

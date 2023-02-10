@@ -30,6 +30,7 @@ describe("redis-sentinel主从切换自动更新redis2的dnsrecord", () => {
       apisecret: Config.apiSecret,
       domainname: Config.redisdomain,
       ip: "162.14.120.141",
+      t: Date.now(),
     });
     assert.equal(result, true, "更新dns记录失败");
   });
