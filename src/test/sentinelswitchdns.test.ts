@@ -9,11 +9,8 @@ const timeout = new Promise<string>((resolve, reject) => {
 });
 
 describe("redis-sentinel主从切换自动更新redis2的dnsrecord", () => {
-  beforeEach(async () => {
+  before(async () => {
     await new Config().Load();
-  });
-  afterEach(() => {
-    // runs after each test in this block
   });
 
   it("监听sentinel切换事件", async () => {
