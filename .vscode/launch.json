@@ -22,8 +22,7 @@
             ],
             "cwd": "${workspaceFolder}/src",
             "env": {
-                // "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json",
-                "NODE_ENV2": "PRODUCTION",
+                "configurl": "https://service.yumao.tech/config/api/startconfig/server/P7PhpgtBUrpMa8dbB7KNfCVyd",
                 "NODE_ENV": "debug"
             }
         },{
